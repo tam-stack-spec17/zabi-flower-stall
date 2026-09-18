@@ -9,15 +9,14 @@
 <body class="text-gray-800 min-h-screen relative">
     
     <!-- Looping Video Background -->
-    <div class="fixed inset-0 z-[-1] overflow-hidden">
-        <!-- We use a royalty-free stock video of flowers here -->
-        <video autoplay loop muted playsinline class="absolute min-w-full min-h-full object-cover top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-pink-and-white-flowers-in-the-sun-4131-large.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <!-- Dark overlay so the text stands out -->
-        <div class="absolute inset-0 bg-black/40"></div>
-    </div>
+        <div class="fixed inset-0 z-[-1] overflow-hidden">
+            <video autoplay loop muted playsinline class="absolute min-w-full min-h-full object-cover top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                <source src="shop-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <!-- Dark overlay so text remains readable -->
+            <div class="absolute inset-0 bg-black/40"></div>
+        </div>
 
     <!-- Main Content Box -->
     <div class="relative z-10 p-6 flex flex-col items-center justify-center min-h-screen">
