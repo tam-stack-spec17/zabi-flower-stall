@@ -5,60 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zabi Flower Stall</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* CSS for the floating flowers animation */
-        @keyframes float {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
-        }
-        .flower {
-            position: fixed;
-            font-size: 2rem;
-            animation: float 10s linear infinite;
-            z-index: 0;
-            bottom: -10%;
-        }
-        /* Randomizing positions, speeds, and delays */
-        .flower:nth-child(1) { left: 10%; animation-duration: 8s; animation-delay: 0s; }
-        .flower:nth-child(2) { left: 30%; animation-duration: 12s; animation-delay: 2s; font-size: 3rem; }
-        .flower:nth-child(3) { left: 50%; animation-duration: 10s; animation-delay: 4s; }
-        .flower:nth-child(4) { left: 70%; animation-duration: 14s; animation-delay: 1s; }
-        .flower:nth-child(5) { left: 90%; animation-duration: 9s; animation-delay: 3s; font-size: 2.5rem; }
-        .flower:nth-child(6) { left: 20%; animation-duration: 11s; animation-delay: 5s; }
-        .flower:nth-child(7) { left: 80%; animation-duration: 13s; animation-delay: 0.5s; }
-        
-        body {
-            overflow-x: hidden; /* Prevents horizontal scrolling */
-        }
-    </style>
 </head>
-<body class="bg-gradient-to-br from-pink-50 to-purple-100 text-gray-800 min-h-screen">
+<body class="text-gray-800 min-h-screen relative">
     
-    <!-- Animated Background Flowers -->
-    <div class="flower">🌸</div>
-    <div class="flower">🌺</div>
-    <div class="flower">🌼</div>
-    <div class="flower">🌸</div>
-    <div class="flower">🌺</div>
-    <div class="flower">🌼</div>
-    <div class="flower">🌸</div>
+    <!-- Looping Video Background -->
+    <div class="fixed inset-0 z-[-1] overflow-hidden">
+        <!-- We use a royalty-free stock video of flowers here -->
+        <video autoplay loop muted playsinline class="absolute min-w-full min-h-full object-cover top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-pink-and-white-flowers-in-the-sun-4131-large.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <!-- Dark overlay so the text stands out -->
+        <div class="absolute inset-0 bg-black/40"></div>
+    </div>
 
     <!-- Main Content Box -->
-    <div class="relative z-10">
-        <header class="bg-pink-600/90 backdrop-blur-sm text-white text-center py-10 shadow-md">
-            <h1 class="text-4xl font-bold">Zabi Flower Stall</h1>
-            <p class="mt-2 text-xl">Fresh Flowers for Every Occasion</p>
+    <div class="relative z-10 p-6 flex flex-col items-center justify-center min-h-screen">
+        <header class="bg-pink-600/90 backdrop-blur-sm text-white text-center py-10 px-8 w-full max-w-4xl rounded-t-lg shadow-md">
+            <h1 class="text-5xl font-bold">Zabi Flower Stall</h1>
+            <p class="mt-3 text-2xl">Fresh Flowers for Every Occasion</p>
         </header>
-        <main class="max-w-4xl mx-auto p-6 mt-8 bg-white/80 backdrop-blur-md rounded-lg shadow-xl">
-            <h2 class="text-2xl font-semibold mb-4 text-pink-600">Our Services</h2>
-            <ul class="list-disc pl-6 space-y-2 text-lg">
-                <li>Fresh Bouquets</li>
-                <li>Wedding Decorations</li>
-                <li>Event Floral Arrangements</li>
-                <li>Custom Flower Baskets</li>
-            </ul>
-            <div class="mt-8 text-center">
-                <a href="https://maps.app.goo.gl/8B9KbWLMzG3U3pp5A" target="_blank" class="bg-pink-600 text-white px-6 py-3 rounded-full font-bold hover:bg-pink-700 transition shadow-lg">Visit Our Store</a>
+        
+        <main class="w-full max-w-4xl p-8 bg-white/90 backdrop-blur-md rounded-b-lg shadow-2xl">
+            <h2 class="text-3xl font-semibold mb-6 text-pink-600 text-center">Our Services</h2>
+            <div class="flex justify-center">
+                <ul class="list-disc pl-6 space-y-3 text-xl font-medium">
+                    <li>Fresh Bouquets & Arrangements</li>
+                    <li>Wedding & Event Decorations</li>
+                    <li>Custom Flower Baskets</li>
+                    <li>Daily Fresh Deliveries</li>
+                </ul>
+            </div>
+            <div class="mt-10 text-center">
+                <a href="https://maps.app.goo.gl/8B9KbWLMzG3U3pp5A" target="_blank" class="inline-block bg-pink-600 text-white px-8 py-4 rounded-full text-xl font-bold hover:bg-pink-700 transition transform hover:scale-105 shadow-lg">
+                    📍 Visit Our Store
+                </a>
             </div>
         </main>
     </div>
