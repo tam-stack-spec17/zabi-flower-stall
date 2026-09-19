@@ -37,13 +37,12 @@
         </div>
     </nav>
 
-    <!-- Looping Video Background -->
-    <div class="fixed inset-0 z-[-1] overflow-hidden">
-        <video autoplay loop muted playsinline poster="gallery-1.jpg" class="absolute min-w-full min-h-full object-cover opacity-60">
-            <source src="shop-video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="absolute inset-0 bg-black/40"></div>
+    <!-- Background Image Slideshow -->
+    <div class="fixed inset-0 z-[-1] bg-pink-50 overflow-hidden">
+        <!-- We reuse your gallery images and add a smooth 1-second fade transition -->
+        <img src="gallery-1.jpg" alt="Background 1" class="bg-slide absolute inset-0 w-full h-full object-cover opacity-60 transition-opacity duration-1000">
+        <img src="gallery-2.jpg" alt="Background 2" class="bg-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000">
+        <img src="gallery-3.jpg" alt="Background 3" class="bg-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000">
     </div>
 
     <!-- Main Content Box -->
@@ -171,6 +170,26 @@
                 <p>&copy; 2026 Zabi Flower Stall. All rights reserved.</p>
             </footer>
     </div>
+    
+    <!-- Background Slideshow Script -->
+    <script>
+        const slides = document.querySelectorAll('.bg-slide');
+        let currentSlideIndex = 0;
+
+        setInterval(() => {
+            // Fade out the current image
+            slides[currentSlideIndex].classList.remove('opacity-60');
+            slides[currentSlideIndex].classList.add('opacity-0');
+            
+            // Move to the next image in the list
+            currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+            
+            // Fade in the new image
+            slides[currentSlideIndex].classList.remove('opacity-0');
+            slides[currentSlideIndex].classList.add('opacity-60');
+        }, 4000); // 4000 milliseconds = 4 seconds
+    </script>
+
 <!-- Flower Sticker Animation Script -->
     <script>
         // List of flower stickers to cycle through
@@ -200,7 +219,7 @@
             }, 700);
         });
     </script>
-    
+
     <!-- Floating WhatsApp Button -->
     <a href="https://wa.me/919343458734" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-[90] bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform duration-300 flex items-center justify-center cursor-pointer">
         <!-- Official WhatsApp SVG Icon -->
