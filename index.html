@@ -204,7 +204,7 @@
             </div>
 
                 <h2 id="gallery" class="scroll-mt-24 text-3xl font-semibold mb-6 text-pink-600 text-center">Our Arrangements</h2>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <!-- Image 1 -->
                     <img src="gallery-1.jpg" alt="Flower Arrangement 1" loading="lazy" class="w-full h-64 object-cover rounded-lg shadow-md hover:scale-105 transition transform duration-300">
                     <!-- Image 2 -->
@@ -377,5 +377,60 @@
         });
     </script>
 
+<!-- Full-Screen Lightbox Overlay -->
+    <div id="lightbox" class="fixed inset-0 z-[200] bg-black/95 hidden flex-col items-center justify-center backdrop-blur-md cursor-pointer">
+        <!-- Close icon -->
+        <div class="absolute top-6 right-6 text-white/70 hover:text-white transition">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </div>
+        
+        <!-- Media containers -->
+        <img id="lightbox-img" src="" class="max-w-[95%] max-h-[85vh] object-contain hidden rounded-lg shadow-2xl cursor-default">
+        <video id="lightbox-video" autoplay loop muted playsinline controls class="max-w-[95%] max-h-[85vh] object-contain hidden rounded-lg shadow-2xl cursor-default"></video>
+    </div>
+
+    <!-- Lightbox Script -->
+    <script>
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxVideo = document.getElementById('lightbox-video');
+
+        // Find all images and videos specifically inside the gallery grid
+        const galleryItems = document.querySelectorAll('#gallery-grid img, #gallery-grid video');
+
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // Turn on the black overlay
+                lightbox.classList.remove('hidden');
+                lightbox.classList.add('flex');
+                
+                // Reset media visibility
+                lightboxImg.classList.add('hidden');
+                lightboxVideo.classList.add('hidden');
+
+                // Check if clicked item is an image or video, then load it
+                if (item.tagName === 'IMG') {
+                    lightboxImg.src = item.src;
+                    lightboxImg.classList.remove('hidden');
+                } else if (item.tagName === 'VIDEO') {
+                    // Grab the video source from the child <source> tag
+                    const sourceTag = item.querySelector('source');
+                    lightboxVideo.src = sourceTag ? sourceTag.src : item.src;
+                    lightboxVideo.classList.remove('hidden');
+                    lightboxVideo.play(); // Auto-play the full-screen video
+                }
+            });
+        });
+
+        // Close lightbox when clicking anywhere on the black background
+        lightbox.addEventListener('click', (e) => {
+            if (e.target !== lightboxImg && e.target !== lightboxVideo) {
+                lightbox.classList.add('hidden');
+                lightbox.classList.remove('flex');
+                lightboxVideo.src = ""; // Stops video playback in the background
+            }
+        });
+    </script>
+    
 </body>
 </html>
