@@ -18,6 +18,14 @@
 </head>
 <body class="text-gray-800 min-h-screen relative">
     
+    <!-- Custom Flower Sticker Loading Screen -->
+    <div id="loading-screen" class="fixed inset-0 z-[100] bg-white flex flex-col items-center justify-center transition-opacity duration-700">
+        <!-- The Changing Sticker -->
+        <div id="flower-sticker" class="text-7xl mb-4 drop-shadow-md transition-transform duration-100">🌸</div>
+        <!-- Loading Text -->
+        <p class="text-pink-600 font-semibold text-xl tracking-wider animate-pulse">Preparing Blooms...</p>
+    </div>
+
     <!-- Sticky Navigation Bar -->
     <nav class="fixed top-0 left-0 w-full z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-pink-100 py-4">
         <div class="max-w-4xl mx-auto px-4 flex justify-center gap-4 sm:gap-8 text-sm sm:text-lg font-bold text-pink-700">
@@ -164,6 +172,34 @@
                 <p>&copy; 2026 Zabi Flower Stall. All rights reserved.</p>
             </footer>
     </div>
+<!-- Flower Sticker Animation Script -->
+    <script>
+        // List of flower stickers to cycle through
+        const flowers = ['🌸', '🌹', '🌻', '🌺', '🌷', '🪷', '🌼'];
+        let currentFlowerIndex = 0;
+        const stickerElement = document.getElementById('flower-sticker');
 
+        // Swap the flower every 250 milliseconds
+        const stickerInterval = setInterval(() => {
+            currentFlowerIndex = (currentFlowerIndex + 1) % flowers.length;
+            stickerElement.innerText = flowers[currentFlowerIndex];
+            
+            // Add a tiny bounce effect when it changes
+            stickerElement.style.transform = 'scale(1.15)';
+            setTimeout(() => stickerElement.style.transform = 'scale(1)', 100);
+        }, 250);
+
+        // Fade out the screen when the video and images finish loading
+        window.addEventListener('load', function() {
+            const loader = document.getElementById('loading-screen');
+            loader.style.opacity = '0';
+            
+            // Wait for the fade to finish, then delete the screen and stop the animation
+            setTimeout(() => {
+                loader.style.display = 'none';
+                clearInterval(stickerInterval);
+            }, 700);
+        });
+    </script>
 </body>
 </html>
