@@ -75,12 +75,12 @@
 
 <!-- Main Content -->
 <div class="relative z-10 p-6 flex flex-col items-center justify-center min-h-screen">
-    <header class="w-full max-w-4xl bg-pink-600/70 backdrop-blur-md text-white py-10 px-4 text-center rounded-t-lg shadow-md mt-24">
+    <header class="w-full max-w-4xl bg-pink-600/50 backdrop-blur-md text-white py-10 px-4 text-center rounded-t-lg shadow-md mt-24">
         <h1 class="text-5xl font-bold">Zabi Flower Stall</h1>
         <p class="mt-3 text-2xl">Fresh Flowers for Every Occasion</p>
     </header>
     
-    <main class="w-full max-w-4xl p-8 bg-white/60 backdrop-blur-md rounded-b-lg shadow-2xl">
+    <main class="w-full max-w-4xl p-8 bg-white/45 backdrop-blur-md rounded-b-lg shadow-2xl">
 
         <div class="mb-10 border-b border-gray-300/50 pb-8 text-center">
             <h2 id="story" class="scroll-mt-24 text-3xl font-semibold mb-4 text-pink-600">Our Story</h2>
@@ -89,14 +89,32 @@
             </p>
         </div> 
 
-        <h2 id="services" class="scroll-mt-24 text-3xl font-semibold mb-6 text-pink-600 text-center">Our Services</h2>
-        <div class="flex justify-center">
-            <ul class="list-disc pl-6 space-y-3 text-xl font-medium text-gray-800">
-                <li>Fresh Bouquets & Arrangements</li>
-                <li>Wedding & Event Decorations</li>
-                <li>Custom Flower Baskets</li>
-                <li>Daily Fresh Deliveries</li>
-            </ul>
+        <!-- Expanded Services Section -->
+        <div class="mb-12 border-b border-gray-300/50 pb-10">
+            <h2 id="services" class="scroll-mt-24 text-3xl font-semibold mb-8 text-pink-600 text-center">Our Services</h2>
+            
+            <div class="space-y-8 text-center max-w-3xl mx-auto px-4">
+                <!-- Service 1 -->
+                <div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Wedding & Pre-Wedding Ceremonies</h3>
+                    <p class="text-gray-800 font-medium leading-relaxed">Exquisite floral designs tailored for Haldi, Nikah, Valima, Shukrana, Receptions, and full traditional Wedding ceremonies.</p>
+                </div>
+                <!-- Service 2 -->
+                <div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Venue & Stage Transformations</h3>
+                    <p class="text-gray-800 font-medium leading-relaxed">Grand stage decorations and breathtaking entrance setups customized to perfectly match your specific theme and venue.</p>
+                </div>
+                <!-- Service 3 -->
+                <div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Personal Floral Accessories</h3>
+                    <p class="text-gray-800 font-medium leading-relaxed">Custom-crafted bridal florals, groom's floral accessories, and elegant, fresh garlands designed for your special day.</p>
+                </div>
+                <!-- Service 4 -->
+                <div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Special Occasions & Parties</h3>
+                    <p class="text-gray-800 font-medium leading-relaxed">Beautiful fresh flower arrangements and venue styling for all kinds of parties, functions, and everyday celebrations.</p>
+                </div>
+            </div>
         </div>
 
         <!-- Category Buttons -->
@@ -159,9 +177,30 @@
             </div>
         </div>
 
-        <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
-            <a href="https://maps.app.goo.gl/8B9KbWLMzG3U3pp5A" target="_blank" class="inline-block w-full sm:w-auto text-center bg-pink-600 text-white px-8 py-4 rounded-full text-xl font-bold transition transform hover:scale-105 shadow-lg">📍 Visit Our Store</a>
-            <a href="https://wa.me/919343458734" target="_blank" class="inline-block w-full sm:w-auto text-center bg-green-500 text-white px-8 py-4 rounded-full text-xl font-bold transition transform hover:scale-105 shadow-lg">💬 WhatsApp Us</a>
+        <!-- Store Timings & Action Buttons -->
+        <div class="mt-12 flex flex-col items-center w-full">
+            
+            <!-- Timings Banner -->
+            <div class="text-center mb-8 bg-white/50 backdrop-blur-sm px-8 py-4 rounded-2xl shadow-sm border border-pink-100 w-full max-w-lg">
+                <p class="text-xl font-bold text-pink-700 mb-1">Store Timings: 7:00 AM - 11:00 PM</p>
+                <p class="text-gray-800 font-semibold">Available 24/7 on call for your convenience</p>
+            </div>
+
+            <!-- Primary Buttons (Side-by-Side on Desktop, Stacked on Mobile) -->
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 w-full max-w-lg mb-4">
+                <a href="https://maps.app.goo.gl/8B9KbWLMzG3U3pp5A" target="_blank" class="w-full text-center bg-pink-600 text-white px-8 py-4 rounded-full text-xl font-bold transition transform hover:scale-105 shadow-md">
+                    📍 Visit Our Store
+                </a>
+                <a href="https://wa.me/919343458734" target="_blank" class="w-full text-center bg-green-500 text-white px-8 py-4 rounded-full text-xl font-bold transition transform hover:scale-105 shadow-md">
+                    💬 WhatsApp Us
+                </a>
+            </div>
+
+            <!-- Centered 24/7 Call Button -->
+            <a href="tel:+919343458734" class="w-full max-w-lg sm:max-w-xs text-center bg-blue-600 text-white px-8 py-4 rounded-full text-xl font-bold transition transform hover:scale-105 shadow-md">
+                📞 Call Now
+            </a>
+            
         </div>
 
         <div class="mt-12 mb-10 border-t border-gray-300/50 pt-8 w-full">
