@@ -9,7 +9,7 @@
     <!-- Import elegant Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
-    <!-- Custom Fonts and Button Glow Animations -->
+    <!-- Custom Fonts, Button Glows, and Background Reel Animation -->
     <style>
         h1, h2, h3 {
             font-family: 'Playfair Display', serif;
@@ -23,6 +23,26 @@
         /* Green WhatsApp Buttons Hover Glow */
         .bg-green-500:hover, a[href*="wa.me"]:hover {
             box-shadow: 0 0 18px 2px rgba(37, 211, 102, 0.6) !important;
+        }
+
+        /* Continuous Background Scroll Animation (Reel Effect) */
+        @keyframes scrollReel {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-scroll {
+            animation: scrollReel 40s linear infinite;
+        }
+        
+        /* Gen Z Gradient Animation */
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .animate-gradient {
+            background-size: 200% 200%;
+            animation: gradientShift 5s ease infinite;
         }
     </style>
 </head>
@@ -38,44 +58,62 @@
 
     <!-- Sticky Navigation Bar -->
     <nav class="fixed top-0 left-0 w-full z-50 bg-white/90 backdrop-blur-md shadow-sm border-b border-pink-100 py-4">
-        <div class="max-w-4xl mx-auto px-4 flex justify-center gap-4 sm:gap-8 text-sm sm:text-lg font-bold text-pink-700">
+        <div class="max-w-4xl mx-auto px-4 flex flex-wrap justify-center gap-4 sm:gap-6 text-sm sm:text-base font-bold text-pink-700">
             <a href="#story" class="hover:text-pink-500 transition">Story</a>
             <a href="#services" class="hover:text-pink-500 transition">Services</a>
+            <a href="#collections" class="hover:text-pink-500 transition">Collections</a>
+            <a href="#products" class="hover:text-pink-500 transition">Shop</a>
             <a href="#gallery" class="hover:text-pink-500 transition">Gallery</a>
             <a href="#reviews" class="hover:text-pink-500 transition">Reviews</a>
             <a href="#location" class="hover:text-pink-500 transition">Location</a>
             <a href="#faq" class="hover:text-pink-500 transition">FAQ</a>
-            <a href="#products" class="hover:text-pink-500 transition">Shop</a>
         </div>
     </nav>
 
-    <!-- Background Image Slideshow -->
+    <!-- Continuous Scrolling Background (Reel Effect) -->
     <div class="fixed inset-0 z-[-1] bg-pink-50 overflow-hidden">
-        <!-- We reuse your gallery images and add a smooth 1-second fade transition -->
-        <img src="gallery-1.jpg" alt="Background 1" class="bg-slide absolute inset-0 w-full h-full object-cover opacity-60 transition-opacity duration-1000">
-        <img src="gallery-2.jpg" alt="Background 2" class="bg-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000">
-        <img src="gallery-3.jpg" alt="Background 3" class="bg-slide absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000">
+        <div class="flex h-full w-[400vw] md:w-[200vw] animate-scroll">
+            <!-- Image Set 1 (Update these paths to point to your new folders!) -->
+            <div class="flex w-[200vw] md:w-[100vw] h-full">
+                <img src="gallery-1.jpg" alt="bg" class="w-1/4 h-full object-cover opacity-30">
+                <img src="gallery-2.jpg" alt="bg" class="w-1/4 h-full object-cover opacity-30">
+                <img src="gallery-3.jpg" alt="bg" class="w-1/4 h-full object-cover opacity-30">
+                <img src="decor-1.jpg" alt="bg" class="w-1/4 h-full object-cover opacity-30">
+            </div>
+            <!-- Image Set 2 (Exact Duplicate to create the infinite loop) -->
+            <div class="flex w-[200vw] md:w-[100vw] h-full">
+                <img src="gallery-1.jpg" alt="bg" class="w-1/4 h-full object-cover opacity-30">
+                <img src="gallery-2.jpg" alt="bg" class="w-1/4 h-full object-cover opacity-30">
+                <img src="gallery-3.jpg" alt="bg" class="w-1/4 h-full object-cover opacity-30">
+                <img src="decor-1.jpg" alt="bg" class="w-1/4 h-full object-cover opacity-30">
+            </div>
+        </div>
     </div>
 
     <!-- Main Content Box -->
     <div class="relative z-10 p-6 flex flex-col items-center justify-center min-h-screen">
+        
+        <!-- Frosted Pink Header -->
         <header class="w-full max-w-4xl bg-pink-600/70 backdrop-blur-md text-white py-10 px-4 text-center rounded-t-lg shadow-md mt-24">
             <h1 class="text-5xl font-bold">Zabi Flower Stall</h1>
             <p class="mt-3 text-2xl">Fresh Flowers for Every Occasion</p>
         </header>
         
+        <!-- Frosted White Main Box -->
         <main class="w-full max-w-4xl p-8 bg-white/60 backdrop-blur-md rounded-b-lg shadow-2xl">
     
             <!-- Our Story Section -->
-            <div class="mb-10 border-b border-gray-200 pb-8 text-center">
+            <div class="mb-10 border-b border-gray-300/50 pb-8 text-center">
                 <h2 id="story" class="scroll-mt-24 text-3xl font-semibold mb-4 text-pink-600">Our Story</h2>
-                <p class="text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed">
+                <p class="text-lg text-gray-800 max-w-2xl mx-auto leading-relaxed">
                     Led by floral designer Syed Zabi, Zabi Flower Decoration is built on a profound passion for artistry and design. We specialize in transforming venues into breathtaking spaces through bespoke wedding and event decorations. With a keen eye for elegance and a commitment to sourcing only the finest, freshest blooms, our team works intimately with every client to bring their unique vision to life. From intimate gatherings to grand celebrations, we believe every special moment deserves to be framed in beauty.
                 </p>
             </div> 
+
+            <!-- Services Section -->
             <h2 id="services" class="scroll-mt-24 text-3xl font-semibold mb-6 text-pink-600 text-center">Our Services</h2>
             <div class="flex justify-center">
-                <ul class="list-disc pl-6 space-y-3 text-xl font-medium">
+                <ul class="list-disc pl-6 space-y-3 text-xl font-medium text-gray-800">
                     <li>Fresh Bouquets & Arrangements</li>
                     <li>Wedding & Event Decorations</li>
                     <li>Custom Flower Baskets</li>
@@ -83,127 +121,89 @@
                 </ul>
             </div>
 
-            <!-- Business Hours Section -->
-            <div class="mt-10 border-t border-gray-300 pt-8">
-                <h2 class="text-3xl font-semibold mb-6 text-pink-600 text-center">Business Hours</h2>
-                <div class="max-w-md mx-auto bg-pink-50/50 p-6 rounded-xl shadow-inner border border-pink-100">
-                    <div class="flex justify-between py-3 border-b border-pink-200 text-lg">
-                        <span class="font-bold text-gray-700">Monday - Saturday</span>
-                        <span class="text-gray-600">8:00 AM - 9:00 PM</span>
-                    </div>
-                    <div class="flex justify-between py-3 text-lg">
-                        <span class="font-bold text-gray-700">Sunday</span>
-                        <span class="text-gray-600">8:00 AM - 2:00 PM</span>
-                    </div>
+            <!-- Transparent Collection Categories -->
+            <div id="collections" class="scroll-mt-24 mt-12 border-t border-gray-300/50 pt-8 mb-12 w-full">
+                <h2 class="text-3xl font-semibold mb-8 text-pink-600 text-center">Explore Our Collections</h2>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="#bridal" class="px-6 py-3 bg-pink-100/40 backdrop-blur-md border border-pink-300/60 rounded-full text-pink-800 font-bold shadow-sm hover:shadow-lg hover:bg-pink-200/60 hover:scale-105 transition-all">Bridal Collection</a>
+                    <a href="#groom" class="px-6 py-3 bg-pink-100/40 backdrop-blur-md border border-pink-300/60 rounded-full text-pink-800 font-bold shadow-sm hover:shadow-lg hover:bg-pink-200/60 hover:scale-105 transition-all">Groom Collection</a>
+                    <a href="#bed" class="px-6 py-3 bg-pink-100/40 backdrop-blur-md border border-pink-300/60 rounded-full text-pink-800 font-bold shadow-sm hover:shadow-lg hover:bg-pink-200/60 hover:scale-105 transition-all">Bed Decorations</a>
+                    <a href="#car" class="px-6 py-3 bg-pink-100/40 backdrop-blur-md border border-pink-300/60 rounded-full text-pink-800 font-bold shadow-sm hover:shadow-lg hover:bg-pink-200/60 hover:scale-105 transition-all">Car Decoration</a>
+                    <a href="#kids" class="px-6 py-3 bg-pink-100/40 backdrop-blur-md border border-pink-300/60 rounded-full text-pink-800 font-bold shadow-sm hover:shadow-lg hover:bg-pink-200/60 hover:scale-105 transition-all">Kids Collection</a>
                 </div>
             </div>
 
-            <!-- Customer Reviews -->
-            <div class="mt-12 border-t border-gray-300 pt-8 w-full">
-                <h2 id="reviews" class="scroll-mt-24 text-3xl font-semibold mb-8 text-pink-600 text-center">What Our Customers Say</h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    
-                    <!-- Review 1 -->
-                    <div class="bg-pink-50/50 p-6 rounded-xl border border-pink-100 shadow-sm hover:shadow-md transition">
-                        <div class="text-yellow-400 text-lg mb-3">⭐⭐⭐⭐⭐</div>
-                        <p class="text-gray-700 italic mb-4 leading-relaxed">
-                            "The flower arrangements for my sister's wedding were absolutely stunning. Syed Zabi and his team went above and beyond to make the venue look magical! The attention to detail was perfect."
-                        </p>
-                        <p class="text-right font-bold text-pink-700">- Ayesha M.</p>
-                    </div>
-
-                    <!-- Review 2 -->
-                    <div class="bg-pink-50/50 p-6 rounded-xl border border-pink-100 shadow-sm hover:shadow-md transition">
-                        <div class="text-yellow-400 text-lg mb-3">⭐⭐⭐⭐⭐</div>
-                        <p class="text-gray-700 italic mb-4 leading-relaxed">
-                            "Best flower stall in the area! The bouquets are always incredibly fresh and last for days. Highly recommend their custom baskets for any special occasion or just to brighten someone's day."
-                        </p>
-                        <p class="text-right font-bold text-pink-700">- Rahul K.</p>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- Location Map -->
-            <div class="mt-12 mb-10 border-t border-gray-300 pt-8 w-full max-w-3xl mx-auto">
-                <h2 id="location" class="scroll-mt-24 text-3xl font-semibold mb-6 text-pink-600 text-center">Find Us Here</h2>
-                
-                <!-- We use this div to make the map responsive and stylish -->
-                <div class="w-full h-80 md:h-96 rounded-xl overflow-hidden shadow-lg border border-pink-100">
-                    
-                    <!-- PASTE YOUR GOOGLE MAPS IFRAME CODE ON THE LINE BELOW THIS ONE -->
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.354071429986!2d77.52408837454621!3d12.94918051537049!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3e6590758d7f%3A0x40ecb30b765d45d!2sZabi%20Flower%20Stall!5e0!3m2!1sen!2sin!4v1789778751316!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-                    
-                </div>
-            </div>
-
-            <!-- Action Buttons -->
-            <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
-                <a href="https://maps.app.goo.gl/8B9KbWLMzG3U3pp5A" target="_blank" class="inline-block w-full sm:w-auto text-center bg-pink-600 text-white px-8 py-4 rounded-full text-xl font-bold hover:bg-pink-700 transition transform hover:scale-105 shadow-lg">
-                    📍 Visit Our Store
-                </a>
-                
-                <a href="https://wa.me/919343458734?text=Hello%20Zabi%20Flower%20Stall!%20I%20would%20like%20to%20order%20some%20flowers." target="_blank" class="inline-block w-full sm:w-auto text-center bg-green-500 text-white px-8 py-4 rounded-full text-xl font-bold hover:bg-green-600 transition transform hover:scale-105 shadow-lg">
-                    💬 WhatsApp Us
-                </a>
-            </div>
-
-            <!-- Photo Gallery -->
-            <div class="mt-12 border-t border-gray-300 pt-8 w-full">
-
-                <!-- Featured Products / Catalog Section -->
-            <div class="mt-12 border-t border-gray-300 pt-8 w-full mb-12">
+            <!-- Featured Products (No Prices) -->
+            <div class="mt-12 border-t border-gray-300/50 pt-8 w-full mb-12">
                 <h2 id="products" class="scroll-mt-24 text-3xl font-semibold mb-8 text-pink-600 text-center">Featured Collections</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     
-                    <!-- Product 1: Image Card -->
+                    <!-- Product 1 -->
                     <div class="bg-pink-50/70 backdrop-blur-sm rounded-xl overflow-hidden border border-pink-100 shadow-md flex flex-col transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
-                        <!-- Product Image -->
                         <img src="gallery-1.jpg" alt="Premium Rose Bouquet" loading="lazy" class="w-full h-64 object-cover">
-                        
                         <div class="p-6 flex flex-col flex-grow">
-                            <div class="flex justify-between items-start mb-2 gap-4">
-                                <h3 class="text-2xl font-semibold text-pink-700">Premium Rose Bouquet</h3>
-                            </div>
+                            <h3 class="text-2xl font-semibold text-pink-700 mb-2">Premium Rose Bouquet</h3>
                             <p class="text-gray-700 mb-4 text-sm leading-relaxed">A stunning arrangement of freshly picked red roses, perfect for anniversaries and special surprises.</p>
-                            
-                            <!-- Product Details -->
                             <ul class="text-sm text-gray-600 mb-6 space-y-1 flex-grow">
                                 <li><strong class="text-gray-800">Material:</strong> Fresh Red Roses, Baby's Breath</li>
                                 <li><strong class="text-gray-800">Wrapping:</strong> Premium Korean Paper with Silk Ribbon</li>
-                                <li><strong class="text-gray-800">Details:</strong> Includes 15-20 stems. Custom notes available.</li>
+                                <li><strong class="text-gray-800">Details:</strong> Custom notes available.</li>
                             </ul>
-                            
-                            <!-- Direct Call Button -->
                             <a href="tel:+919343458734" class="w-full block text-center bg-pink-600 text-white font-bold py-3 rounded-lg hover:bg-pink-700 transition shadow-md">
-                                📞 Call to Order
+                                📞 Call for Quote
                             </a>
                         </div>
                     </div>
 
-                    <!-- Product 2: Short Video Card -->
+                    <!-- Product 2 -->
                     <div class="bg-pink-50/70 backdrop-blur-sm rounded-xl overflow-hidden border border-pink-100 shadow-md flex flex-col transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
-                        <!-- Product Video (Automatically loops silently) -->
                         <video autoplay loop muted playsinline class="w-full h-64 object-cover">
                             <source src="short-video.mp4" type="video/mp4">
                         </video>
-                        
                         <div class="p-6 flex flex-col flex-grow">
-                            <div class="flex justify-between items-start mb-2 gap-4">
-                                <h3 class="text-2xl font-semibold text-pink-700">Bridal Garland Set</h3>
-                            </div>
+                            <h3 class="text-2xl font-semibold text-pink-700 mb-2">Bridal Garland Set</h3>
                             <p class="text-gray-700 mb-4 text-sm leading-relaxed">Elegant, hand-woven floral garlands designed for traditional wedding ceremonies. Watch the video to see the intricate detailing.</p>
-                            
-                            <!-- Product Details -->
                             <ul class="text-sm text-gray-600 mb-6 space-y-1 flex-grow">
                                 <li><strong class="text-gray-800">Material:</strong> Fresh Jasmine, Orchids, and Rose Petals</li>
                                 <li><strong class="text-gray-800">Style:</strong> Traditional South Indian Design</li>
                                 <li><strong class="text-gray-800">Details:</strong> Set includes 2 matching pieces. Lightweight.</li>
                             </ul>
-                            
-                            <!-- Direct Call Button -->
                             <a href="tel:+919343458734" class="w-full block text-center bg-pink-600 text-white font-bold py-3 rounded-lg hover:bg-pink-700 transition shadow-md">
-                                📞 Call to Order
+                                📞 Call for Quote
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class="bg-pink-50/70 backdrop-blur-sm rounded-xl overflow-hidden border border-pink-100 shadow-md flex flex-col transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
+                        <img src="gallery-3.jpg" alt="Custom Flower Basket" loading="lazy" class="w-full h-64 object-cover">
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-2xl font-semibold text-pink-700 mb-2">Custom Flower Basket</h3>
+                            <p class="text-gray-700 mb-4 text-sm leading-relaxed">A beautifully arranged mixed floral basket, perfect for birthdays, anniversaries, and gifting.</p>
+                            <ul class="text-sm text-gray-600 mb-6 space-y-1 flex-grow">
+                                <li><strong class="text-gray-800">Material:</strong> Lilies, Orchids, and Seasonal Blooms</li>
+                                <li><strong class="text-gray-800">Presentation:</strong> Hand-woven wicker basket</li>
+                                <li><strong class="text-gray-800">Details:</strong> Customizable size and color theme.</li>
+                            </ul>
+                            <a href="tel:+919343458734" class="w-full block text-center bg-pink-600 text-white font-bold py-3 rounded-lg hover:bg-pink-700 transition shadow-md">
+                                📞 Call for Quote
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Product 4 -->
+                    <div class="bg-pink-50/70 backdrop-blur-sm rounded-xl overflow-hidden border border-pink-100 shadow-md flex flex-col transition-transform duration-300 hover:shadow-lg hover:-translate-y-1">
+                        <img src="decor-1.jpg" alt="Wedding Car Decoration" loading="lazy" class="w-full h-64 object-cover">
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-2xl font-semibold text-pink-700 mb-2">Wedding Car Decor</h3>
+                            <p class="text-gray-700 mb-4 text-sm leading-relaxed">Elegant and secure floral arrangements for the bridal car, designed to stay beautiful all day.</p>
+                            <ul class="text-sm text-gray-600 mb-6 space-y-1 flex-grow">
+                                <li><strong class="text-gray-800">Material:</strong> Red Roses, Orchids, and Premium Netting</li>
+                                <li><strong class="text-gray-800">Style:</strong> Traditional & Modern layout options</li>
+                                <li><strong class="text-gray-800">Details:</strong> Safe for car paint, quick installation.</li>
+                            </ul>
+                            <a href="tel:+919343458734" class="w-full block text-center bg-pink-600 text-white font-bold py-3 rounded-lg hover:bg-pink-700 transition shadow-md">
+                                📞 Call for Quote
                             </a>
                         </div>
                     </div>
@@ -211,66 +211,128 @@
                 </div>
             </div>
 
+            <!-- Lightbox Gallery -->
+            <div class="mt-12 border-t border-gray-300/50 pt-8 w-full">
                 <h2 id="gallery" class="scroll-mt-24 text-3xl font-semibold mb-6 text-pink-600 text-center">Our Arrangements</h2>
-                <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <!-- Image 1 -->
-                    <img src="gallery-1.jpg" alt="Flower Arrangement 1" loading="lazy" class="w-full h-64 object-cover rounded-lg shadow-md hover:scale-105 transition transform duration-300">
-                    <!-- Image 2 -->
-                    <img src="gallery-2.jpg" alt="Flower Arrangement 2" loading="lazy" class="w-full h-64 object-cover rounded-lg shadow-md hover:scale-105 transition transform duration-300">
-                    <!-- Image 3 -->
-                    <img src="gallery-3.jpg" alt="Flower Arrangement 3" loading="lazy" class="w-full h-64 object-cover rounded-lg shadow-md hover:scale-105 transition transform duration-300">
+                <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-6 px-2">
+                    <!-- Photo -->
+                    <div class="overflow-hidden rounded-xl shadow-sm aspect-square border border-pink-100">
+                        <img src="gallery-1.jpg" alt="Stage Decoration" loading="lazy" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500 cursor-pointer">
+                    </div>
+                    <!-- Video -->
+                    <div class="overflow-hidden rounded-xl shadow-sm aspect-square border border-pink-100 relative group">
+                        <video autoplay loop muted playsinline class="w-full h-full object-cover hover:scale-110 transition-transform duration-500 cursor-pointer">
+                            <source src="decor-vid-1.mp4" type="video/mp4">
+                        </video>
+                        <div class="absolute top-2 right-2 bg-black/40 text-white rounded-full p-1.5 backdrop-blur-sm pointer-events-none">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                    </div>
+                    <!-- Photo -->
+                    <div class="overflow-hidden rounded-xl shadow-sm aspect-square border border-pink-100">
+                        <img src="gallery-2.jpg" alt="Car Decoration" loading="lazy" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500 cursor-pointer">
+                    </div>
+                    <!-- Photo -->
+                    <div class="overflow-hidden rounded-xl shadow-sm aspect-square border border-pink-100">
+                        <img src="gallery-3.jpg" alt="Bouquet Details" loading="lazy" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500 cursor-pointer">
+                    </div>
+                    <!-- Photo -->
+                    <div class="overflow-hidden rounded-xl shadow-sm aspect-square border border-pink-100">
+                        <img src="decor-1.jpg" alt="Venue Setup" loading="lazy" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500 cursor-pointer">
+                    </div>
+                    <!-- Video -->
+                    <div class="overflow-hidden rounded-xl shadow-sm aspect-square border border-pink-100 relative group">
+                        <video autoplay loop muted playsinline class="w-full h-full object-cover hover:scale-110 transition-transform duration-500 cursor-pointer">
+                            <source src="decor-vid-2.mp4" type="video/mp4">
+                        </video>
+                        <div class="absolute top-2 right-2 bg-black/40 text-white rounded-full p-1.5 backdrop-blur-sm pointer-events-none">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customer Reviews -->
+            <div class="mt-12 border-t border-gray-300/50 pt-8 w-full">
+                <h2 id="reviews" class="scroll-mt-24 text-3xl font-semibold mb-8 text-pink-600 text-center">What Our Customers Say</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="bg-pink-50/50 p-6 rounded-xl border border-pink-100 shadow-sm hover:shadow-md transition">
+                        <div class="text-yellow-400 text-lg mb-3">⭐⭐⭐⭐⭐</div>
+                        <p class="text-gray-800 italic mb-4 leading-relaxed">
+                            "The flower arrangements for my sister's wedding were absolutely stunning. Syed Zabi and his team went above and beyond to make the venue look magical!"
+                        </p>
+                        <p class="text-right font-bold text-pink-700">- Ayesha M.</p>
+                    </div>
+                    <div class="bg-pink-50/50 p-6 rounded-xl border border-pink-100 shadow-sm hover:shadow-md transition">
+                        <div class="text-yellow-400 text-lg mb-3">⭐⭐⭐⭐⭐</div>
+                        <p class="text-gray-800 italic mb-4 leading-relaxed">
+                            "Best flower stall in the area! The bouquets are always incredibly fresh and last for days. Highly recommend their custom baskets for any special occasion."
+                        </p>
+                        <p class="text-right font-bold text-pink-700">- Rahul K.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Location Map -->
+            <div class="mt-12 mb-10 border-t border-gray-300/50 pt-8 w-full max-w-3xl mx-auto">
+                <h2 id="location" class="scroll-mt-24 text-3xl font-semibold mb-6 text-pink-600 text-center">Find Us Here</h2>
+                <div class="w-full h-80 md:h-96 rounded-xl overflow-hidden shadow-lg border border-pink-100">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.354071429986!2d77.52408837454621!3d12.94918051537049!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3e6590758d7f%3A0x40ecb30b765d45d!2sZabi%20Flower%20Stall!5e0!3m2!1sen!2sin!4v1789778751316!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="https://maps.app.goo.gl/8B9KbWLMzG3U3pp5A" target="_blank" class="inline-block w-full sm:w-auto text-center bg-pink-600 text-white px-8 py-4 rounded-full text-xl font-bold transition transform hover:scale-105 shadow-lg">
+                    📍 Visit Our Store
+                </a>
+                <a href="https://wa.me/919343458734?text=Hello%20Zabi%20Flower%20Stall!%20I%20would%20like%20to%20order%20some%20flowers." target="_blank" class="inline-block w-full sm:w-auto text-center bg-green-500 text-white px-8 py-4 rounded-full text-xl font-bold transition transform hover:scale-105 shadow-lg">
+                    💬 WhatsApp Us
+                </a>
             </div>
 
             <!-- FAQ Section -->
-            <div class="mt-12 mb-10 border-t border-gray-300 pt-8 w-full">
+            <div class="mt-12 mb-10 border-t border-gray-300/50 pt-8 w-full">
                 <h2 id="faq" class="scroll-mt-24 text-3xl font-semibold mb-8 text-pink-600 text-center">Frequently Asked Questions</h2>
                 <div class="max-w-3xl mx-auto space-y-4">
-                    
-                    <!-- FAQ 1 -->
                     <details class="bg-pink-50/70 rounded-lg border border-pink-100 shadow-sm cursor-pointer group transition-all duration-300">
                         <summary class="font-semibold text-gray-800 p-5 hover:text-pink-600 transition outline-none list-none flex justify-between items-center">
                             What areas do you deliver to?
                             <span class="text-pink-400 group-open:rotate-180 transition-transform duration-300">▼</span>
                         </summary>
-                        <div class="p-5 pt-0 text-gray-700 leading-relaxed border-t border-pink-100/50 mt-1">
+                        <div class="p-5 pt-0 text-gray-800 leading-relaxed border-t border-pink-100/50 mt-1">
                             We currently deliver throughout Bengaluru and surrounding local areas. For large event decorations or weddings, we can travel further upon special request.
                         </div>
                     </details>
-
-                    <!-- FAQ 2 -->
                     <details class="bg-pink-50/70 rounded-lg border border-pink-100 shadow-sm cursor-pointer group transition-all duration-300">
                         <summary class="font-semibold text-gray-800 p-5 hover:text-pink-600 transition outline-none list-none flex justify-between items-center">
                             Do you take custom orders for weddings?
                             <span class="text-pink-400 group-open:rotate-180 transition-transform duration-300">▼</span>
                         </summary>
-                        <div class="p-5 pt-0 text-gray-700 leading-relaxed border-t border-pink-100/50 mt-1">
+                        <div class="p-5 pt-0 text-gray-800 leading-relaxed border-t border-pink-100/50 mt-1">
                             Absolutely! Bespoke wedding and event decorations are our specialty. Please tap the WhatsApp button to schedule a consultation with Syed Zabi.
                         </div>
                     </details>
-
-                    <!-- FAQ 3 -->
                     <details class="bg-pink-50/70 rounded-lg border border-pink-100 shadow-sm cursor-pointer group transition-all duration-300">
                         <summary class="font-semibold text-gray-800 p-5 hover:text-pink-600 transition outline-none list-none flex justify-between items-center">
                             How far in advance should I place an order?
                             <span class="text-pink-400 group-open:rotate-180 transition-transform duration-300">▼</span>
                         </summary>
-                        <div class="p-5 pt-0 text-gray-700 leading-relaxed border-t border-pink-100/50 mt-1">
+                        <div class="p-5 pt-0 text-gray-800 leading-relaxed border-t border-pink-100/50 mt-1">
                             For daily bouquets, 24 hours notice is preferred, though we accept same-day orders based on availability. For large event decorations, please contact us at least 2-3 weeks in advance.
                         </div>
                     </details>
-
                 </div>
             </div>
 
             <!-- Social Media Links -->
-            <div class="mt-10 pt-6 border-t border-gray-200 flex justify-center gap-6">
+            <div class="mt-10 pt-6 border-t border-gray-300/50 flex justify-center gap-6">
                 <!-- Instagram -->
                 <a href="https://www.instagram.com/zabiflowerdecoration/" target="_blank" class="text-pink-600 hover:text-pink-700 transition transform hover:scale-110 shadow-sm rounded-full bg-pink-50 p-3">
                     <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" />
                     </svg>
                 </a>
-                
                 <!-- Facebook -->
                 <a href="https://www.facebook.com/syed.zabi.980315/" target="_blank" class="text-pink-600 hover:text-pink-700 transition transform hover:scale-110 shadow-sm rounded-full bg-pink-50 p-3">
                     <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -279,112 +341,44 @@
                 </a>
             </div>
 
-            <!-- Footer Section -->
-        <footer class="mt-16 border-t border-pink-200 pt-8 pb-4 text-center">
-            <div class="flex flex-col items-center justify-center gap-2 mb-6 text-gray-700">
-                <p class="font-semibold text-pink-700 text-lg">Zabi Flower Decoration</p>
-                <p>📍 Bengaluru, Karnataka</p>
-                <p>📞 +91 93434 58734</p>
-            </div>
-            <p class="text-sm text-gray-500 mb-2">
-                &copy; 2026 Zabi Flower Stall. All rights reserved.
-            </p>
-            <p class="text-sm text-gray-500">
-                Created by <strong class="text-pink-600">Er. Tamanna Sheikh</strong>
-            </p>
-        </footer>
+            <!-- Main Footer Section -->
+            <footer class="mt-12 pt-8 border-t border-gray-300/50 flex flex-col items-center">
+                <!-- Shop Contact Info -->
+                <div class="flex flex-col items-center justify-center gap-1 mb-6 text-gray-800 text-center">
+                    <p class="font-semibold text-pink-700 text-xl mb-1">Zabi Flower Decoration</p>
+                    <p>📍 Bengaluru, Karnataka</p>
+                    <div class="flex flex-col sm:flex-row gap-2 sm:gap-6 mt-2 font-medium">
+                        <p>📞 +91 93434 58734</p>
+                        <p class="hidden sm:block text-pink-300">|</p>
+                        <p>📞 +91 99458 22792</p>
+                    </div>
+                </div>
+                
+                <p class="text-sm text-gray-600 mb-6 font-medium">&copy; 2026 Zabi Flower Stall. All rights reserved.</p>
+
+                <!-- Gen Z Developer Pitch -->
+                <div class="w-full max-w-sm mt-4 p-[3px] rounded-2xl bg-gradient-to-r from-pink-400 via-purple-400 to-pink-400 shadow-lg hover:shadow-xl transition-shadow duration-300 animate-gradient">
+                    <div class="bg-white/95 backdrop-blur-md rounded-xl p-5 text-center">
+                        <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-1">Architected By</p>
+                        <h3 class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-purple-600 mb-2">Er. Tamanna Sheikh 👩🏻‍💻</h3>
+                        <p class="text-sm text-gray-700 mb-4 font-medium">Want a sick website for your own hustle? Let's build something aesthetic & fast. 🚀</p>
+                        
+                        <div class="flex justify-center gap-3">
+                            <a href="https://wa.me/919513851507" target="_blank" class="flex-1 bg-gray-900 text-white text-xs font-bold py-2.5 px-3 rounded-lg hover:bg-pink-600 transition-colors shadow-md flex items-center justify-center gap-1">
+                                📱 Hit me up
+                            </a>
+                            <a href="mailto:tamanna4work@gmail.com" class="flex-1 bg-gray-50 text-gray-800 text-xs font-bold py-2.5 px-3 rounded-lg border border-gray-200 hover:border-pink-300 hover:bg-pink-50 transition-colors shadow-sm flex items-center justify-center gap-1">
+                                ✉️ Email me
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
 
         </main>
-        
     </div>
     
-    <!-- Background Slideshow Script -->
-    <script>
-        const slides = document.querySelectorAll('.bg-slide');
-        let currentSlideIndex = 0;
-
-        setInterval(() => {
-            // Fade out the current image
-            slides[currentSlideIndex].classList.remove('opacity-60');
-            slides[currentSlideIndex].classList.add('opacity-0');
-            
-            // Move to the next image in the list
-            currentSlideIndex = (currentSlideIndex + 1) % slides.length;
-            
-            // Fade in the new image
-            slides[currentSlideIndex].classList.remove('opacity-0');
-            slides[currentSlideIndex].classList.add('opacity-60');
-        }, 4000); // 4000 milliseconds = 4 seconds
-    </script>
-
-<!-- Flower Sticker Animation Script -->
-    <script>
-        // List of flower stickers to cycle through
-        const flowers = ['🌸', '🌹', '🌻', '🌺', '🌷', '🪷', '🌼'];
-        let currentFlowerIndex = 0;
-        const stickerElement = document.getElementById('flower-sticker');
-
-        // Swap the flower every 250 milliseconds
-        const stickerInterval = setInterval(() => {
-            currentFlowerIndex = (currentFlowerIndex + 1) % flowers.length;
-            stickerElement.innerText = flowers[currentFlowerIndex];
-            
-            // Add a tiny bounce effect when it changes
-            stickerElement.style.transform = 'scale(1.15)';
-            setTimeout(() => stickerElement.style.transform = 'scale(1)', 100);
-        }, 250);
-
-        // Fade out the screen when the video and images finish loading
-        window.addEventListener('load', function() {
-            const loader = document.getElementById('loading-screen');
-            loader.style.opacity = '0';
-            
-            // Wait for the fade to finish, then delete the screen and stop the animation
-            setTimeout(() => {
-                loader.style.display = 'none';
-                clearInterval(stickerInterval);
-            }, 700);
-        });
-    </script>
-
-    <!-- Back to Top Button -->
-    <button id="backToTop" class="fixed bottom-24 right-6 z-[90] bg-pink-600 text-white p-3 rounded-full shadow-lg opacity-0 pointer-events-none transition-all duration-300 hover:bg-pink-700 hover:scale-110 flex items-center justify-center">
-        <!-- Up Arrow SVG Icon -->
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
-        </svg>
-    </button>
-
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/919343458734" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-[90] bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform duration-300 flex items-center justify-center cursor-pointer">
-        <!-- Official WhatsApp SVG Icon -->
-        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a5.227 5.227 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-        </svg>
-    </a>
-
-    <!-- Back to Top Script -->
-    <script>
-        const backToTopBtn = document.getElementById('backToTop');
-        
-        // Show button when scrolled down 500 pixels
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 500) {
-                backToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
-                backToTopBtn.classList.add('opacity-100', 'pointer-events-auto');
-            } else {
-                backToTopBtn.classList.add('opacity-0', 'pointer-events-none');
-                backToTopBtn.classList.remove('opacity-100', 'pointer-events-auto');
-            }
-        });
-
-        // Scroll to top when clicked
-        backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    </script>
-
-<!-- Full-Screen Lightbox Overlay -->
+    <!-- Full-Screen Lightbox Overlay -->
     <div id="lightbox" class="fixed inset-0 z-[200] bg-black/95 hidden flex-col items-center justify-center backdrop-blur-md cursor-pointer">
         <!-- Close icon -->
         <div class="absolute top-6 right-6 text-white/70 hover:text-white transition">
@@ -396,48 +390,91 @@
         <video id="lightbox-video" autoplay loop muted playsinline controls class="max-w-[95%] max-h-[85vh] object-contain hidden rounded-lg shadow-2xl cursor-default"></video>
     </div>
 
-    <!-- Lightbox Script -->
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-24 right-6 z-[90] bg-pink-600 text-white p-3 rounded-full shadow-lg opacity-0 pointer-events-none transition-all duration-300 flex items-center justify-center">
+        <!-- Up Arrow SVG Icon -->
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919343458734" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-[90] bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform duration-300 flex items-center justify-center cursor-pointer">
+        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a5.227 5.227 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
+
+    <!-- Application Scripts -->
     <script>
+        // --- 1. Loading Sticker Animation ---
+        const flowers = ['🌸', '🌹', '🌻', '🌺', '🌷', '🪷', '🌼'];
+        let currentFlowerIndex = 0;
+        const stickerElement = document.getElementById('flower-sticker');
+
+        const stickerInterval = setInterval(() => {
+            currentFlowerIndex = (currentFlowerIndex + 1) % flowers.length;
+            stickerElement.innerText = flowers[currentFlowerIndex];
+            stickerElement.style.transform = 'scale(1.15)';
+            setTimeout(() => stickerElement.style.transform = 'scale(1)', 100);
+        }, 250);
+
+        window.addEventListener('load', function() {
+            const loader = document.getElementById('loading-screen');
+            loader.style.opacity = '0';
+            setTimeout(() => {
+                loader.style.display = 'none';
+                clearInterval(stickerInterval);
+            }, 700);
+        });
+
+        // --- 2. Back to Top Button ---
+        const backToTopBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+                backToTopBtn.classList.add('opacity-100', 'pointer-events-auto');
+            } else {
+                backToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+                backToTopBtn.classList.remove('opacity-100', 'pointer-events-auto');
+            }
+        });
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // --- 3. Lightbox Gallery Script ---
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
         const lightboxVideo = document.getElementById('lightbox-video');
-
-        // Find all images and videos specifically inside the gallery grid
         const galleryItems = document.querySelectorAll('#gallery-grid img, #gallery-grid video');
 
         galleryItems.forEach(item => {
             item.addEventListener('click', () => {
-                // Turn on the black overlay
                 lightbox.classList.remove('hidden');
                 lightbox.classList.add('flex');
-                
-                // Reset media visibility
                 lightboxImg.classList.add('hidden');
                 lightboxVideo.classList.add('hidden');
 
-                // Check if clicked item is an image or video, then load it
                 if (item.tagName === 'IMG') {
                     lightboxImg.src = item.src;
                     lightboxImg.classList.remove('hidden');
                 } else if (item.tagName === 'VIDEO') {
-                    // Grab the video source from the child <source> tag
                     const sourceTag = item.querySelector('source');
                     lightboxVideo.src = sourceTag ? sourceTag.src : item.src;
                     lightboxVideo.classList.remove('hidden');
-                    lightboxVideo.play(); // Auto-play the full-screen video
+                    lightboxVideo.play(); 
                 }
             });
         });
 
-        // Close lightbox when clicking anywhere on the black background
         lightbox.addEventListener('click', (e) => {
             if (e.target !== lightboxImg && e.target !== lightboxVideo) {
                 lightbox.classList.add('hidden');
                 lightbox.classList.remove('flex');
-                lightboxVideo.src = ""; // Stops video playback in the background
+                lightboxVideo.src = ""; 
             }
         });
     </script>
-
 </body>
 </html>
