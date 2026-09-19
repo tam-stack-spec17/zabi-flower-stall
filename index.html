@@ -141,21 +141,35 @@
                 </div>
             </div>
 
-            <!-- Categorized Galleries -->
+            <!-- Categorized Galleries (Auto-Populated by JS) -->
         <div class="mt-4 border-t border-gray-300/50 pt-8 w-full">
             
-            <!-- Bridal Collection -->
             <div id="bridal" class="scroll-mt-24 mb-16">
                 <h2 class="text-3xl font-semibold mb-6 text-pink-600 text-center">Bridal Collection</h2>
-                <!-- Notice we changed id to class="gallery-grid" -->
-                <div class="gallery-grid grid grid-cols-2 md:grid-cols-3 gap-4 px-2">
-                    <!-- Photo -->
-                    <div class="overflow-hidden rounded-xl shadow-sm aspect-square border border-pink-100">
-                        <img src="bridal/img-1.jpeg" alt="Bridal" loading="lazy" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500 cursor-pointer">
-                    </div>
-                    <!-- Add more bridal images here by copying the block above -->
-                </div>
+                <div class="gallery-grid grid grid-cols-2 md:grid-cols-3 gap-4 px-2"></div>
             </div>
+
+            <div id="groom" class="scroll-mt-24 mb-16">
+                <h2 class="text-3xl font-semibold mb-6 text-pink-600 text-center">Groom Collection</h2>
+                <div class="gallery-grid grid grid-cols-2 md:grid-cols-3 gap-4 px-2"></div>
+            </div>
+
+            <div id="bed" class="scroll-mt-24 mb-16">
+                <h2 class="text-3xl font-semibold mb-6 text-pink-600 text-center">Bed Decorations</h2>
+                <div class="gallery-grid grid grid-cols-2 md:grid-cols-3 gap-4 px-2"></div>
+            </div>
+
+            <div id="car" class="scroll-mt-24 mb-16">
+                <h2 class="text-3xl font-semibold mb-6 text-pink-600 text-center">Car Decoration</h2>
+                <div class="gallery-grid grid grid-cols-2 md:grid-cols-3 gap-4 px-2"></div>
+            </div>
+
+            <div id="kids" class="scroll-mt-24 mb-16">
+                <h2 class="text-3xl font-semibold mb-6 text-pink-600 text-center">Kids Collection</h2>
+                <div class="gallery-grid grid grid-cols-2 md:grid-cols-3 gap-4 px-2"></div>
+            </div>
+
+        </div>
 
             <!-- Groom Collection -->
             <div id="groom" class="scroll-mt-24 mb-16">
@@ -379,37 +393,102 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // --- 3. Lightbox Gallery Script ---
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
-        const lightboxVideo = document.getElementById('lightbox-video');
-        const galleryItems = document.querySelectorAll('.gallery-grid img, .gallery-grid video');
-        galleryItems.forEach(item => {
-            item.addEventListener('click', () => {
-                lightbox.classList.remove('hidden');
-                lightbox.classList.add('flex');
-                lightboxImg.classList.add('hidden');
-                lightboxVideo.classList.add('hidden');
+        // --- 3. Smart Auto-Loader & Lightbox Gallery ---
+    const categories = ['bridal', 'groom', 'bed', 'car', 'kids'];
 
-                if (item.tagName === 'IMG') {
-                    lightboxImg.src = item.src;
-                    lightboxImg.classList.remove('hidden');
-                } else if (item.tagName === 'VIDEO') {
-                    const sourceTag = item.querySelector('source');
-                    lightboxVideo.src = sourceTag ? sourceTag.src : item.src;
-                    lightboxVideo.classList.remove('hidden');
-                    lightboxVideo.play(); 
-                }
-            });
-        });
-
-        lightbox.addEventListener('click', (e) => {
-            if (e.target !== lightboxImg && e.target !== lightboxVideo) {
-                lightbox.classList.add('hidden');
-                lightbox.classList.remove('flex');
-                lightboxVideo.src = ""; 
+    async function loadDynamicGallery() {
+        for (const category of categories) {
+            const grid = document.querySelector(`#${category} .gallery-grid`);
+            if (!grid) continue;
+            
+            grid.innerHTML = ''; // Clear the grid
+            
+            // 1. Auto-Load N+ Images (img-1.jpeg, img-2.jpeg...)
+            let imgIndex = 1;
+            let keepLookingImg = true;
+            while (keepLookingImg) {
+                const imgPath = `${category}/img-${imgIndex}.jpeg`;
+                try {
+                    const response = await fetch(imgPath, { method: 'HEAD' });
+                    if (response.ok) {
+                        grid.innerHTML += `
+                            <div class="overflow-hidden rounded-xl shadow-sm aspect-square border border-pink-100">
+                                <img src="${imgPath}" alt="${category}" loading="lazy" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500 cursor-pointer">
+                            </div>
+                        `;
+                        imgIndex++;
+                    } else { keepLookingImg = false; }
+                } catch (e) { keepLookingImg = false; }
             }
-        });
+
+            // 2. Auto-Load N+ Videos (vid-1.mp4, vid-2.mp4...)
+            let vidIndex = 1;
+            let keepLookingVid = true;
+            while (keepLookingVid) {
+                const vidPath = `${category}/vid-${vidIndex}.mp4`;
+                try {
+                    const response = await fetch(vidPath, { method: 'HEAD' });
+                    if (response.ok) {
+                        grid.innerHTML += `
+                            <div class="overflow-hidden rounded-xl shadow-sm aspect-square border border-pink-100 relative group">
+                                <video autoplay loop muted playsinline class="w-full h-full object-cover hover:scale-110 transition-transform duration-500 cursor-pointer">
+                                    <source src="${vidPath}" type="video/mp4">
+                                </video>
+                                <div class="absolute top-2 right-2 bg-black/40 text-white rounded-full p-1.5 backdrop-blur-sm pointer-events-none">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                </div>
+                            </div>
+                        `;
+                        vidIndex++;
+                    } else { keepLookingVid = false; }
+                } catch (e) { keepLookingVid = false; }
+            }
+            
+            // Show placeholder if folder is completely empty
+            if (imgIndex === 1 && vidIndex === 1) {
+                grid.innerHTML = `<p class="text-gray-400 italic col-span-full text-center py-4">New collection updates coming soon!</p>`;
+            }
+        }
+    }
+
+    // Run the auto-loader immediately
+    loadDynamicGallery();
+
+    // Smart Event Delegation for Lightbox (Works automatically on new media)
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxVideo = document.getElementById('lightbox-video');
+
+    document.body.addEventListener('click', (e) => {
+        // Open Image
+        if (e.target.matches('.gallery-grid img')) {
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex');
+            lightboxImg.classList.remove('hidden');
+            lightboxVideo.classList.add('hidden');
+            lightboxImg.src = e.target.src;
+        }
+        // Open Video
+        else if (e.target.matches('.gallery-grid video')) {
+            lightbox.classList.remove('hidden');
+            lightbox.classList.add('flex');
+            lightboxVideo.classList.remove('hidden');
+            lightboxImg.classList.add('hidden');
+            
+            const sourceTag = e.target.querySelector('source');
+            lightboxVideo.src = sourceTag ? sourceTag.src : e.target.src;
+            lightboxVideo.play();
+        }
+    });
+
+    // Close Lightbox
+    lightbox.addEventListener('click', (e) => {
+        if (e.target !== lightboxImg && e.target !== lightboxVideo) {
+            lightbox.classList.add('hidden');
+            lightbox.classList.remove('flex');
+            lightboxVideo.src = ""; 
+        }
+    });
     </script>
 </body>
 </html>
